@@ -8,7 +8,7 @@ Los datos utilizados son las imágenes correspondientes al dataset [Chest X-Ray 
 
 | Variable | Descripción | Tipo de dato | Rango/Valores posibles | Fuente de datos |
 |----------|-------------|--------------|------------------------|-----------------|
-| Imagen   | Imagen asociada a la muestra de la radiografía a analizar | Imagen JPG | Tres canales (RGB) de diferentes dimensiones | [Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia) |
+| Imagen   | Imagen asociada a la muestra de la radiografía a analizar | Imagen JPG | 3 canales (RGB) sin dimensiones fijas establecidas | [Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia) |
 | Clase    | Clase a la cual la radiografía pertenece | String | Normal, Neumonía Viral, Neumonía Bacteriana | [Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia) |
 
 
