@@ -9,7 +9,7 @@ credentials*
 env/
 
 #Data paths
-data/
+/data/
 
 #Kaggle credentials
 .kaggle/
