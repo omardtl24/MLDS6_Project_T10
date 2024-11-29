@@ -34,9 +34,7 @@ La ruta se obtiene directamente del enlace proporcionado en la plataforma de Kag
    - **Verificación de la estructura de los datos**: Se contó el número total de archivos en cada subcarpeta para asegurar la integridad del dataset.  
    - **Identificación de formatos**: Se analizó la estructura de archivos para determinar las extensiones presentes, asegurando la compatibilidad con los procesos posteriores.
    - Para estandarizar las imágenes correspondientes a las radiografías con neumonía viral en el conjunto de prueba (`./chest_xray/test`), se planeó calcular el promedio de la relación de aspecto. La relación de aspecto se define como:  
-    $$
-    \text{Ancho} = \text{Relación de aspecto} \times 500, \quad \text{Alto} = 500
-    $$
+    Ancho = Relación de aspecto × 500, Alto = 500
 
 
 
