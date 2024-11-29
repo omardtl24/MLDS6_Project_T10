@@ -6,9 +6,8 @@ Este informe describe los resultados del proyecto de machine learning y presenta
 
 ## Resultados del proyecto
 
-- Resumen de los entregables y logros alcanzados en cada etapa del proyecto.
-- Evaluación del modelo final y comparación con el modelo base.
-- Descripción de los resultados y su relevancia para el negocio.
+### Entrega 1
+Se realizó el script de adquisición de datos así como la inclusión del documento de entendimiento de negocio
 
 ## Lecciones aprendidas
 
