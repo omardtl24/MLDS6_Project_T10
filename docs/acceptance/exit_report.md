@@ -7,7 +7,7 @@ Este informe describe los resultados del proyecto de machine learning y presenta
 ## Resultados del proyecto
 
 ### Entrega 1
-Se realizó el script de adquisición de datos así como la inclusión del documento de entendimiento de negocio
+Se realizó el script de adquisición de datos así como la inclusión del documento de entendimiento de negocio junto con el documento de caracterización de los datos
 
 ## Lecciones aprendidas
 
