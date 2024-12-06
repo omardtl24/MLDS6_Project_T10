@@ -14,3 +14,4 @@ env/
 #Kaggle credentials
 .kaggle/
 **/kaggle.json
+/data
