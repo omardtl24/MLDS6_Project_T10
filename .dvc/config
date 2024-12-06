@@ -1,0 +1,5 @@
+[core]
+    remote = storage
+['remote "storage"']
+    url = gdrive://$DRIVEID
+    gdrive_use_service_account = true
