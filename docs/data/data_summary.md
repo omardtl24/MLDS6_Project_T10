@@ -1,27 +1,19 @@
 # Reporte de Datos
 
-Este documento contiene los resultados del análisis exploratorio de datos.
-
 ## Resumen general de los datos
-
-En esta sección se presenta un resumen general de los datos. Se describe el número total de observaciones, variables, el tipo de variables, la presencia de valores faltantes y la distribución de las variables.
+El dataset consta de 5856 imágenes de radiografías de rayos X de pecho divididas en tres conjuntos: entrenamiento (5216 imágenes), prueba (624 imágenes) y validación (16 imágenes). Las imágenes están en formato JPEG y tienen un tamaño total de 1.24 GB. 
 
 ## Resumen de calidad de los datos
-
-En esta sección se presenta un resumen de la calidad de los datos. Se describe la cantidad y porcentaje de valores faltantes, valores extremos, errores y duplicados. También se muestran las acciones tomadas para abordar estos problemas.
+El dataset muestra una alta calidad: no presenta imágenes faltantes, de mala calidad ni problemas de codificación. Todas las imágenes están bien organizadas y en formato uniforme. Sin embargo, se requiere balanceo de clases en los conjuntos de prueba y validación debido al desbalance entre las categorías. Además, se observa que las imágenes tienen dimensiones variables y algunas cuentan con 3 canales, mientras que otras tienen solo 1. Estos factores se tuvieron en cuenta en el preprocesamiento de los datos.
 
 ## Variable objetivo
-
-En esta sección se describe la variable objetivo. Se muestra la distribución de la variable y se presentan gráficos que permiten entender mejor su comportamiento.
+La variable objetivo es la condición del paciente, categorizada como **NORMAL**, **VIRUS** y **BACTERIA**. Sin embargo, en la estructura de los datos solo se identifican las categorías **NORMAL** y **PNEUMONIA**, por lo que es importante verificar si la clasificación entre **VIRUS** y **BACTERIA** se maneja correctamente.
 
 ## Variables individuales
-
-En esta sección se presenta un análisis detallado de cada variable individual. Se muestran estadísticas descriptivas, gráficos de distribución y de relación con la variable objetivo (si aplica). Además, se describen posibles transformaciones que se pueden aplicar a la variable.
+El dataset se compone únicamente de imágenes, sin variables individuales explícitas. Las características relevantes deben extraerse de las imágenes mediante técnicas de procesamiento de imágenes y modelos de aprendizaje profundo como las redes neuronales convolucionales (CNN).
 
 ## Ranking de variables
-
-En esta sección se presenta un ranking de las variables más importantes para predecir la variable objetivo. Se utilizan técnicas como la correlación, el análisis de componentes principales (PCA) o la importancia de las variables en un modelo de aprendizaje automático.
+No se pueden aplicar técnicas de ranking de variables como la correlación o PCA directamente. Se deben usar redes neuronales profundas para aprender las características importantes de las imágenes y determinar su relevancia para la clasificación.
 
 ## Relación entre variables explicativas y variable objetivo
-
-En esta sección se presenta un análisis de la relación entre las variables explicativas y la variable objetivo. Se utilizan gráficos como la matriz de correlación y el diagrama de dispersión para entender mejor la relación entre las variables. Además, se pueden utilizar técnicas como la regresión lineal para modelar la relación entre las variables.
+La relación entre las características visuales de las imágenes y la variable objetivo se modela mediante redes neuronales convolucionales (CNN), que permiten la extracción automática de patrones y la clasificación efectiva de las imágenes.
