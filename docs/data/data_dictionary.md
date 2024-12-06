@@ -9,6 +9,7 @@ Los datos utilizados son las imágenes correspondientes al dataset [Chest X-Ray 
 | Variable | Descripción | Tipo de dato | Rango/Valores posibles | Fuente de datos |
 |----------|-------------|--------------|------------------------|-----------------|
 | Imagen   | Imagen asociada a la muestra de la radiografía a analizar | Imagen JPG | 3 canales (RGB) sin dimensiones fijas establecidas | [Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia) |
-| Clase    | Clase a la cual la radiografía pertenece | String | Normal, Neumonía Viral, Neumonía Bacteriana | [Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia) |
+
+Nota: La clasificación de las imágenes (Normal, Neumonía Viral, Neumonía Bacteriana) está implícitamente estructurada en las carpetas del conjunto de datos, por lo que no se requiere una variable adicional para representar la clase.
 
 
