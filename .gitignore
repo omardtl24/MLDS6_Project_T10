@@ -15,6 +15,7 @@ env/
 .kaggle/
 **/kaggle.json
 **/credentials.json
+**/driveID.txt
 
 #Data
 /data
