@@ -1,6 +1,7 @@
 import json
 import os
 
-def loadCredentials(path):
+def loadData(path):
     with open(path) as f:
-        os.environ["GDRIVE_CREDENTIALS_DATA"] = f.read()
+        return f.read()
+    return None
