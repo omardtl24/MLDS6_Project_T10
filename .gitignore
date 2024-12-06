@@ -11,6 +11,11 @@ env/
 #Data paths
 /data/
 
-#Kaggle credentials
+#Credentials
 .kaggle/
 **/kaggle.json
+**/credentials.json
+**/driveID.txt
+
+#Data
+/data
