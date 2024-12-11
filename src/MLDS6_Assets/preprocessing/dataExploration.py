@@ -98,7 +98,8 @@ def analyzeImageShapes(directory):
     min_pixels = float('inf')
     max_shape = None
     min_shape = None
-
+    avgAspectRatio = 0
+    c = 0
     # Walk through the directory and subdirectories
     for root, _, files in os.walk(directory):
         for filename in files:
@@ -106,8 +107,10 @@ def analyzeImageShapes(directory):
                 file_path = os.path.join(root, filename)
                 with Image.open(file_path) as img:
                     shape = img.size
-                    pixels = shape[0] * shape[1]
-
+                    width, height = shape
+                    pixels = width * height
+                    avgAspectRatio += width/height
+                    c+=1
                     # Count different shapes
                     shape_count[shape] = shape_count.get(shape, 0) + 1
 
@@ -118,12 +121,21 @@ def analyzeImageShapes(directory):
                     if pixels < min_pixels:
                         min_pixels = pixels
                         min_shape = shape
-
+    avgAspectRatio/=c
     num_different_shapes = len(shape_count)
+    totalWidth = 0
+    totalHeight = 0
+    for shape, count in shape_count.items():
+        w,h = shape
+        totalWidth += w*count
+        totalHeight += h*count
+    avgShape = (totalWidth // c, totalHeight// c)
 
     res = f"""Number of different shapes: {num_different_shapes}
 Shape with most pixels: {max_shape} (Total pixels: {max_pixels})
-Shape with least pixels: {min_shape} (Total pixels: {min_pixels})"""
+Shape with least pixels: {min_shape} (Total pixels: {min_pixels})
+Average aspect ratio (width / height): {avgAspectRatio:.2f}
+Average size: {avgShape}"""
 
     return res
 
