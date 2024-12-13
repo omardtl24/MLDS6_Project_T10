@@ -21,10 +21,15 @@ Se utlizaron como metricas principales:
 3. f1-score
 Todos los anteriores son representados en una matriz de confusion y una curva roc, como veremos en el siguiente punto. 
 ### Resultados de evaluación
+A continuacion disponemos los resultados:
 
-A continuacion disponemos los resultados
+#### Metricas generales:
 ![alt text](image.png)
+
+#### Matriz de confusion:
 ![alt text](Untitled.png)
+
+#### Curva roc:
 ![alt text](Untitled-1.png)
 
 
