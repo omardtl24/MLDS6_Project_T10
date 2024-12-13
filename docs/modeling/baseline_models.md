@@ -24,13 +24,13 @@ Todos los anteriores son representados en una matriz de confusion y una curva ro
 A continuacion disponemos los resultados:
 
 #### Metricas generales:
-![alt text](image.png)
+![alt text](info.png)
 
 #### Matriz de confusion:
-![alt text](Untitled.png)
+![alt text](matrix.png)
 
 #### Curva roc:
-![alt text](Untitled-1.png)
+![alt text](roc.png)
 
 
 ## Análisis de los resultados
