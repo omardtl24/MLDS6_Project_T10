@@ -10,7 +10,7 @@ def configModelV1(baseModel,hp, lr=1e-3):
     Returns:
         keras.Model: Modelo completo.
     """
-    input = layers.Input(shape=(765, 500, 3))
+    input = layers.Input(shape=(1397, 970, 3))
     x = baseModel(input)
     x = layers.GlobalAveragePooling2D()(x)
     x = layers.Dense(hp.Choice('units', [128,256]), activation='relu')(x)
@@ -44,7 +44,7 @@ def configModelV2(baseModel,hp, lr=1e-3):
     Returns:
         keras.Model: Modelo completo.
     """
-    input = layers.Input(shape=(765, 500, 3))
+    input = layers.Input(shape=(1397, 970, 3))
     x = baseModel(input)
     x = layers.GlobalAveragePooling2D()(x)
     x = layers.Dense(hp.Choice('units', [32,64,128]), activation='relu')(x)
