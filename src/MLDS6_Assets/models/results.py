@@ -1,7 +1,8 @@
 import numpy as np
-from sklearn.metrics import classification_report, confusion_matrix, roc_curve, auc
-import matplotlib.pyplot as plt
-import seaborn as sns
+from sklearn.metrics import classification_report, confusion_matrix, roc_curve, auc # type: ignore
+import matplotlib.pyplot as plt # type: ignore
+from itertools import cycle
+import seaborn as sns # type: ignore
 
 def getModelTestResults(model, testData, class_names, name="default"):
     # Make predictions

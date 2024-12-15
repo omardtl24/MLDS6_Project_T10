@@ -1,4 +1,4 @@
-import tensorflow as tf
+import tensorflow as tf # type: ignore
 
 data_augmentation = tf.keras.Sequential([
     tf.keras.layers.RandomFlip("horizontal"),
@@ -61,3 +61,29 @@ def loadImagesFromDirectory(directory, batch_size, image_size=(720, 500)):
     )
     dataset = dataset.map(lambda x, y: (easy_rescaling(x, training=True), y))
     return dataset
+
+def loadTestImagesFromDirectory(directory, batch_size, image_size=(720, 500)):
+    """
+    Loads test images from a specified directory, applies simple rescaling, and returns the dataset
+    along with the class names.
+
+    Parameters:
+    - directory (str): Path to the directory containing the images, organized into subdirectories by label.
+    - batch_size (int): Number of images per batch.
+    - image_size (tuple): Target size of the images (height, width). Defaults to (765, 500).
+
+    Returns:
+    - dataset (tf.data.Dataset): A TensorFlow dataset with rescaled test images and their labels.
+    - class_names (list of str): A list of class names corresponding to the labels in the dataset.
+    """
+    dataset = tf.keras.preprocessing.image_dataset_from_directory(
+        directory,
+        image_size=image_size,
+        batch_size=batch_size,
+        label_mode='categorical',
+        shuffle=False  # Important for evaluation
+    )
+    # Get class names before any transformations
+    class_names = dataset.class_names
+    dataset = dataset.map(lambda x, y: (easy_rescaling(x, training=False), y))
+    return dataset, class_names
