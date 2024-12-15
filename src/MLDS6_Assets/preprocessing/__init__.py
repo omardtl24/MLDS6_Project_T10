@@ -1,3 +1,3 @@
 from .dataExploration import countFilesinFolder, getFileExtensions, analyzeImageShapes, analyzeImageChannels, getFolderSize
-from .dataTransformation import applyCallableToFiles, convertThreeChannelstoOneChannel, resizeImage, copyFiles
+from .dataTransformation import applyCallableToFiles, convertThreeChannelstoOneChannel, resizeImage, copyFiles, convertOneChanneltoThreeChannels
 from .sampling import deleteUnselectedImages, underSampling

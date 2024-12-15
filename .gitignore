@@ -21,3 +21,6 @@ env/
 #Data
 /data
 /splitData
+
+#Model files
+*.keras
