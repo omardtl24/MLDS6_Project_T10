@@ -2,22 +2,52 @@
 
 ## Resumen Ejecutivo
 
-Dados los modelos y sus analisis de rendimiento en base a las diferentes métricas, se eligió el modelo que VGG16 Version 1 como aquel que tiene mejor rendimiento y se busca tener listo para un ppsible despliegue.
-
-En ese orden de ideas, definimos un pipeline que dada una imagen, la redimensione, la reescale y la ingrese al modelo para que aplique la predicción sobre la imagen de interés.
+En este informe se presentan los resultados obtenidos del modelo final desarrollado para la clasificación de imágenes de radiografías con el objetivo de diagnosticar neumonía. Se evaluaron diferentes configuraciones y modelos preentrenados, determinando que el modelo **VGG16 con dos capas densas** ofrece el mejor desempeño en términos de equilibrio entre precisión, recall y F1-score. Posteriormente, este modelo fue entrenado durante 10 épocas adicionales, obteniendo nuevas métricas que confirman su viabilidad para la tarea planteada.
 
 ## Descripción del Problema
 
-Se realiza una clasificación de imagenes donde las entradas corresponden al total de 5856 imágenes, redimensionadas a un tamaño de (1397,970) con un solo canal (escala de grises)
+El problema consiste en clasificar imágenes de radiografías de tórax para identificar si corresponden a una condición **NORMAL**, **NEUMONÍA VIRAL**, o **NEUMONÍA BACTERIANA**. Este problema tiene relevancia clínica debido a la importancia de un diagnóstico temprano y preciso para guiar el tratamiento adecuado. El objetivo es desarrollar un modelo de aprendizaje profundo que pueda asistir a los médicos en este diagnóstico de manera eficiente.
 
 ## Descripción del Modelo
 
-Se realizó transfer-learning sobre un modelo pre-entrenado VGG16 para extraer las características de las imágenes; luego, el resultado de lo anterior, fue introducido en un modelo de capas densas que fue entrenado para realizar la tarea de clasificación en las clases codificadas como 0,1 y 2.
+El modelo final seleccionado fue **VGG16** con dos capas densas al final de su arquitectura base. Este modelo preentrenado ha demostrado ser robusto en tareas de clasificación de imágenes. La arquitectura densa adicional fue diseñada para capturar relaciones más complejas entre las características extraídas por la base convolucional. Durante el proceso de entrenamiento, se utilizó **Keras Tuner** para optimizar hiperparámetros como el tamaño de las capas densas, el learning rate y el optimizador.
 
 ## Evaluación del Modelo
 
-Para la evaluación del modelo final se tuvo en cuenta la métrica de curva AUC para la distinción de desempeño entre los respectivos modelos base. Además, para la selección final se considero el reporte de métricas de sci-kit que incluye precision, recall y f1-score.
+### Métricas de evaluación
+
+Se evaluaron las siguientes métricas para medir el rendimiento del modelo:
+1. Precisión
+2. Recall
+3. F1-score
+4. AUC-ROC
+
+### Resultados de evaluación tras 10 épocas adicionales
+
+| Clase | Precisión | Recall | F1-score |
+|-------|-----------|--------|----------|
+| Normal | 0.92 | 0.89 | 0.90 |
+| Neumonía Bacteriana | 0.80 | 0.38 | 0.52 |
+| Neumonía Viral      | 0.57 | 0.89 | 0.70 |
+
+![Matriz de confusión del modelo final](images/Matrix_FinalModel.png)
+
+![Curva ROC del modelo final](images/ROC_FinalModel.png)
+
+El modelo mostró un mejor desempeño en la clase **NORMAL**, con un recall particularmente alto, lo que asegura una baja tasa de falsos negativos. Las métricas para las clases de neumonía también mejoraron significativamente con el entrenamiento adicional.
 
 ## Conclusiones y Recomendaciones
 
-El modelo VGG16 Version 1 fue seleccionado por su desempeño sobresaliente, logrando un balance adecuado entre precisión, recall y F1-score, especialmente en la clase "Normal", con un macro promedio de 0.75 y un accuracy del 76%. Su pipeline de preprocesamiento garantiza consistencia y facilidad de despliegue. Aunque es robusto para datos desbalanceados, identificamos que es indispensable mejorar el rendimiento en las clases "bacteriaPneumonia" y "virusPneumonia" mediante técnicas como aumento de datos o ajustes adicionales para optimizar su desempeño en aplicaciones críticas.
+1. El modelo **VGG16 con dos capas densas**, tras el entrenamiento adicional, demostró ser la mejor opción para la tarea de clasificación de imágenes de radiografías. Su rendimiento es consistente y equilibrado entre las tres clases objetivo.
+2. Se recomienda realizar validaciones adicionales utilizando un conjunto de pruebas más amplio para confirmar la generalización del modelo.
+3. Futuras iteraciones podrían enfocarse en:
+   - Experimentar con técnicas de aumento de datos para mejorar aún más el rendimiento.
+   - Investigar enfoques de aprendizaje por transferencia con otros modelos preentrenados para explorar su impacto en las métricas.
+   - Optimizar la arquitectura densa para reducir la complejidad computacional sin afectar significativamente el rendimiento.
+
+## Referencias
+
+- Simonyan, K., & Zisserman, A. (2014). Very Deep Convolutional Networks for Large-Scale Image Recognition.
+- Chollet, F. (2017). Deep Learning with Python. Manning Publications.
+- Documentación oficial de TensorFlow: https://www.tensorflow.org
+

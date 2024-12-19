@@ -1,6 +1,51 @@
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt # type: ignore
+from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau # type: ignore
+import time
 
-def train_model(model, model_name, train_data, validation_data, epochs=10, callbacks=None):
+def createCallbacks(model_name):
+    """
+    Generates a list of callbacks for model training, including:
+    - ModelCheckpoint: Saves the best model based on validation accuracy.
+    - EarlyStopping: Stops training if validation loss doesn't improve.
+    - ReduceLROnPlateau: Reduces learning rate when validation loss stagnates.
+
+    Parameters:
+    - model_name (str): Name used to save the best model.
+
+    Returns:
+    - list: A list of Keras callbacks (ModelCheckpoint, EarlyStopping, ReduceLROnPlateau).
+    """
+
+    # Checkpoint para guardar el mejor modelo
+    checkpoint = ModelCheckpoint(
+        f'best_{model_name}.keras',  
+        monitor='val_accuracy',      
+        mode='max',                  
+        save_best_only=True,         
+        verbose=1                    
+    )
+
+    # Early stopping para prevenir overfitting
+    early_stopping = EarlyStopping(
+        monitor='val_loss',         
+        patience=3,                 
+        restore_best_weights=True,  
+        verbose=1                   
+    )
+
+    # Reducción de learning rate cuando el entrenamiento se estanca
+    reduce_lr = ReduceLROnPlateau(
+        monitor='val_loss',          
+        factor=0.2,                  
+        patience=3,                  
+        min_lr=1e-6,                
+        verbose=1                    
+    )
+
+    return [checkpoint, early_stopping, reduce_lr]
+
+
+def trainModel(model, model_name, train_data, validation_data, epochs=10, callbacks=None):
     """
     Entrena un modelo con los datos de entrenamiento y validación.
 
@@ -15,6 +60,8 @@ def train_model(model, model_name, train_data, validation_data, epochs=10, callb
     Returns:
         keras.callbacks.History: Historia del entrenamiento.
     """
+    callbacks = createCallbacks(model_name)
+    start = time.time()
     history = model.fit(
         train_data,
         epochs=epochs,
@@ -22,9 +69,15 @@ def train_model(model, model_name, train_data, validation_data, epochs=10, callb
         callbacks=callbacks,
         verbose=1
     )
+    end = time.time()
+    t = end-start
+    hours = t // 3600
+    minutes = (t % 3600) // 60
+    seconds = t % 60
+    print(f'{model_name} training time for {epochs} epochs was: {hours}h {minutes}m {seconds}s')
     return history
 
-def plot_training_history(history, model_name):
+def plotTrainingHistory(history, model_name):
     """
     Genera gráficos de precisión y pérdida a lo largo del entrenamiento.
 
