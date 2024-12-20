@@ -8,7 +8,7 @@
 - **Requisitos de seguridad:** En este caso, la seguridad de la información de los datos y del proyecto está dada por los requerimientos de seguridad establecidos en la plataforma de despliegue. Adicionalmente, la transferencia de infomación de datos se realiza a través de protocolos seguros (https)
 - **Diagrama de arquitectura:** En este caso, el servicio de lógica se encuentra desplegado como una API que puede recibir entradas del modelo a través de peticiones que se realizan a través de protocolos de red de la capa de aplicación. Del mismo modo modo, este servicio envía los resultados de la predicción usando el mismo mecanismo. A continuación, se muestra un esquema sencillo que muestar como se realiza dicha operación:
 
-[Arquitectura](API.png)
+![Arquitectura](API.png)
 
 ## Código de despliegue
 
