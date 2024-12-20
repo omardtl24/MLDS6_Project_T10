@@ -2,7 +2,7 @@
 
 ## Infraestructura
 
-- **Nombre del modelo:** (nombre que se le ha dado al modelo)
+- **Nombre del modelo:** *PNEURADNET* (Pneumonia radiograph net)
 - **Plataforma de despliegue:** El endpoint con el modelo y la aplicación con interfaz estan desplegados en Railways.
 - **Requisitos técnicos:** De hardware, se recomienda un minimo de 2 GB de ram y 1 vCPu core. Ademas, para otros requerimientos, es posible  mirar las respectivas listas de los paquetes. Es importante tener en cuenta que los requisitos principales se basan en que el equipo sea capaz de cargar el modelo. (Dado que esto se encuentra en un entorno web, el usuario final puede desentenderse de este apartado)
 - **Requisitos de seguridad:** En este caso, la seguridad de la información de los datos y del proyecto está dada por los requerimientos de seguridad establecidos en la plataforma de despliegue. Adicionalmente, la transferencia de infomación de datos se realiza a través de protocolos seguros (https)
