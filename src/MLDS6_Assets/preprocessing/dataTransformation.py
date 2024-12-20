@@ -150,3 +150,50 @@ def convertThreeChannelstoOneChannel(image_path, verbose=False):
     else:
         # Raise an error if the image could not be loaded
         raise FileNotFoundError(f"Failed to load image at {image_path}. Please check the file path.")
+    
+
+def convertOneChanneltoThreeChannels(image_path, verbose=False):
+    """
+    Checks the number of channels in the input image. If the image has one channel (grayscale),
+    it converts it to a three-channel (RGB) image. If the image already has three channels (RGB),
+    it remains unchanged. The processed image will overwrite the original image file.
+
+    Parameters:
+    image_path (str): The file path of the image to be processed.
+    verbose (bool): If True, print detailed messages about the process.
+
+    Returns:
+    numpy.ndarray: The processed image, either as an RGB image or the original image 
+                    if it was already in RGB.
+
+    Raises:
+    FileNotFoundError: If the image file does not exist or cannot be loaded.
+    """
+
+    # Load the image from the provided path
+    image = cv2.imread(image_path, cv2.IMREAD_UNCHANGED)
+
+    if image is not None:
+        if verbose:
+            print(f"Original image shape: {image.shape}")  # (height, width[, channels])
+
+        # Check if the image has one channel (grayscale)
+        if len(image.shape) == 2 or (len(image.shape) == 3 and image.shape[2] == 1):
+            # Convert the grayscale image to RGB
+            rgb_image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
+            if verbose:
+                print("Image has been converted to three channels (RGB).")
+            # Overwrite the original image with the RGB image
+            cv2.imwrite(image_path, rgb_image)
+            return rgb_image
+        elif len(image.shape) == 3 and image.shape[2] == 3:
+            if verbose:
+                print("Image already has three channels (RGB).")
+            # Save it back unchanged
+            cv2.imwrite(image_path, image)
+            return image
+        else:
+            raise ValueError("Image format not recognized. It must be grayscale or RGB.")
+    else:
+        # Raise an error if the image could not be loaded
+        raise FileNotFoundError(f"Failed to load image at {image_path}. Please check the file path.")

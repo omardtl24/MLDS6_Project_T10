@@ -9,7 +9,7 @@ def separateImages(originalPath,targetPath):
     Parameters:
     ----------
     originalPath (str): Source path of the images
-    targetPath (str): Desgtiny path to the images separated by classes
+    targetPath (str): Destiny path to the images separated by classes
     """
     pattern = re.compile(r'../data[/\\]([^/\\]+)[/\\]([^/\\]+)$')
     m = pattern.search(targetPath)

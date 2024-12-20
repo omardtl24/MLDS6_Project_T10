@@ -10,6 +10,7 @@ env/
 
 #Data paths
 /data/
+/splitData/
 
 #Credentials
 .kaggle/
@@ -19,3 +20,7 @@ env/
 
 #Data
 /data
+/splitData
+
+#Model files
+*.keras
