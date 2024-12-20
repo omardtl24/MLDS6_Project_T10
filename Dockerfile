@@ -10,4 +10,4 @@ RUN python -m pip install --upgrade pip \
 
 COPY . .
 
-CMD ["python", "app.py"]
+CMD ["streamlit","run", "app.py"]
