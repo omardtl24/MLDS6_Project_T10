@@ -42,7 +42,7 @@ El código del backend fue manejado en un repositorio aparte a este. Este reposi
 
 Para el caso del front, el código se puede encontrar en la raíz de este proyecto.
 
-El para acceder al servicio desplegado para el usuario final es: (Página desplegada)[https://mlds6projectt10-production.up.railway.app]
+El para acceder al servicio desplegado para el usuario final es: [Pagina desplegada](https://mlds6projectt10-production.up.railway.app)
 
 (Dichos servicios de back y front pueden estar deshabilitados dado el costo que implica mantenerlos)
 
