@@ -3,12 +3,18 @@
 ## Infraestructura
 
 - **Nombre del modelo:** (nombre que se le ha dado al modelo)
-- **Plataforma de despliegue:** El endpoint esta en Railways.
-- **Requisitos técnicos:** De hardware, se recomienda un minimo de 2 GB de ram y 1 vCPu core. Ademas, para otros requerimientos, es  posible  mirar las respectivas listas
-- **Requisitos de seguridad:** (lista de requisitos de seguridad necesarios para el despliegue, como autenticación, encriptación de datos, etc.)
-- **Diagrama de arquitectura:** (imagen que muestra la arquitectura del sistema que se utilizará para desplegar el modelo)
+- **Plataforma de despliegue:** El endpoint con el modelo y la aplicación con interfaz estan desplegados en Railways.
+- **Requisitos técnicos:** De hardware, se recomienda un minimo de 2 GB de ram y 1 vCPu core. Ademas, para otros requerimientos, es posible  mirar las respectivas listas de los paquetes. Es importante tener en cuenta que los requisitos principales se basan en que el equipo sea capaz de cargar el modelo. (Dado que esto se encuentra en un entorno web, el usuario final puede desentenderse de este apartado)
+- **Requisitos de seguridad:** En este caso, la seguridad de la información de los datos y del proyecto está dada por los requerimientos de seguridad establecidos en la plataforma de despliegue. Adicionalmente, la transferencia de infomación de datos se realiza a través de protocolos seguros (https)
+- **Diagrama de arquitectura:** En este caso, el servicio de lógica se encuentra desplegado como una API que puede recibir entradas del modelo a través de peticiones que se realizan a través de protocolos de red de la capa de aplicación. Del mismo modo modo, este servicio envía los resultados de la predicción usando el mismo mecanismo. A continuación, se muestra un esquema sencillo que muestar como se realiza dicha operación:
+
+[Arquitectura](API.png)
 
 ## Código de despliegue
+
+Para el despliegue, debemos tener en cuenta que se manejo una parte de la apliación de lógica con el modelo; y otra parte para la interacción gráfica del usuario. 
+
+Para el caso del back que era aquel que disponía de los modelos, tenemos:
 
 - **Archivo principal:** Main.py
 - **Rutas de acceso a los archivos:** Debido a la naturaleza del proyecto y del proveedor del despliegue, todos los archivos se encuentran en la misma carpeta y disponen rutas simples.
@@ -19,6 +25,26 @@ Estos archivos son:
 4. requirements.txt
 
 - **Variables de entorno:** api.
+
+Para el caso del front que era aquel que disponía del entorno final para el usuarui, tenemos:
+
+- **Archivo principal:** app.py
+- **Rutas de acceso a los archivos:** Debido a la naturaleza del proyecto y del proveedor del despliegue (Que fue el mismo del backend), todos los archivos se encuentran en la misma carpeta y disponen rutas simples.
+Estos archivos son:
+1. Dockerfile
+2. requirements.txt
+
+- **Variables de entorno:** API_URL.
+
+El código del backend fue manejado en un repositorio aparte a este. Este repositorio se puede encontrar en el siguiente enlace:
+
+[Lógica de despliegue](https://github.com/dfadames/MLDS6_project_frontend_and_api)
+
+Para el caso del front, el código se puede encontrar en la raíz de este proyecto.
+
+El para acceder al servicio desplegado para el usuario final es: (Página desplegada)[https://mlds6projectt10-production.up.railway.app]
+
+(Dichos servicios de back y front pueden estar deshabilitados dado el costo que implica mantenerlos)
 
 ## Documentación del despliegue
 
